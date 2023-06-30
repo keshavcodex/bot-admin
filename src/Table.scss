@@ -12,12 +12,13 @@ table 			      {
   border-spacing: 1; 
   border-collapse: collapse; 
   background:white;
-  border-radius:6px;
+  border-radius: 20px;
+  padding: 40px;
+  margin: 20px;
   overflow:hidden;
-  max-width:800px; 
-  width:100%;
-  margin:0 auto;
-  position:relative;
+  width:95%;
+  margin: 20px;
+  box-shadow: 8px 8px 8px rgb(215, 198, 130);
   
   *               { position:relative }
   
@@ -51,11 +52,8 @@ table 			      {
       td                      { padding-left:45%; margin-bottom:12px;
         &:last-child          { margin-bottom:0 }
         &:before              { 
-          position:absolute;
           font-weight:700;
-          width:40%;
-          left:10px;
-          top:0
+          // top:0
         }
         
         &:nth-child(1):before { content:"Code";}
@@ -68,18 +66,35 @@ table 			      {
   }
 }  	
 
-
-
-
-// body style
-
 body               { 
-  background:#9BC86A; 
-  font:400 18px 'Calibri','Arial';
-  padding:20px;
+  background:#ffd0d0; 
 }
 
-blockquote {
-  color:white;
-  text-align:center;
+
+.btn {
+  color: white;
+  padding: 7px;
+  background: #2c6ee9;
+  height: 40px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.5s;
+}
+.btn-del {
+  color: white;
+  background: #e01515;
+  padding: 7px;
+  height: 40px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.5s;
+}
+
+.btn:hover {
+    box-shadow: 4px 4px 6px rgb(45, 37, 37);
+}
+.btn-del:hover {
+    box-shadow: 4px 4px 6px rgb(45, 37, 37);
 }
