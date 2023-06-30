@@ -1,40 +1,51 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { getSubscriber } from "./services/api";
+import { getSubscriber, unsubscribe, updateCity } from "./services/api";
 import SubscribeForm from "./SubscribeForm";
+import EditCity from "./EditCity";
 import "./Table.scss";
 
 const Table = () => {
   const defaultValue = [
     {
-      _id: 0,
+      _id: "",
       city: "",
       lastUpdated: "",
     },
     {},
   ];
   const [subcriberList, setSubcriberList] = useState(defaultValue);
+
   const getSubcriberList = async () => {
     var response = await getSubscriber();
-    setSubcriberList(response.data);
+    setSubcriberList(response.data.reverse());
   };
-  // const subscribe = async () => {
-    // var response = await subscribe(chatId, city);
-  // };
+
   useEffect(() => {
     getSubcriberList();
   }, []);
 
+  const handleunsubscribe = async (userId) => {
+    var response = await unsubscribe(userId);
+    alert(response.data);
+    getSubcriberList();
+  };
+  const handleEdit = async (userId) => {
+    // var response = await updateCity(user);
+    console.log()
+  };
+
   return (
     <div>
       <h1>Admin Panel</h1>
+      <SubscribeForm />
       <table>
         <thead>
           <tr>
             <th>User Id</th>
             <th>City</th>
             <th>Edit</th>
-            <th>Unsubscribe</th>
+            <th>unsubscribe</th>
           </tr>
         </thead>
         <tbody>
@@ -43,12 +54,18 @@ const Table = () => {
               <td key={props._id}>{props._id}</td>
               <td>{props.city}</td>
               <td>
-                <span type="submit" className="btn" >
+                <span
+                  className="btn"
+                  onClick={() => handleEdit(props._id)}
+                >
                   Edit
                 </span>
               </td>
               <td>
-                <span type="submit" className="btn-del">
+                <span
+                  className="btn-del"
+                  onClick={() => handleunsubscribe(props._id)}
+                >
                   Remove
                 </span>
               </td>
@@ -56,7 +73,6 @@ const Table = () => {
           ))}
         </tbody>
       </table>
-      <SubscribeForm />
     </div>
   );
 };

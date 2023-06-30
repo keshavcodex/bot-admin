@@ -1,11 +1,19 @@
 import "./App.css";
+import EditCity from "./EditCity";
 import Table from "./Table";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Table />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Table />} />
+          <Route path="/edit" element={<EditCity />} />
+        </Routes>
+      </BrowserRouter>
     </div>
+
   );
 }
 
