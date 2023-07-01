@@ -8,7 +8,7 @@
 
 This project is the frontend admin page for the Telegram Weather Update Bot. It provides an interface for administrators to manage settings and perform administrative tasks for the bot. You can use this by searching keshavcodexbot, the name of this bot is botex.
 
-# Here is the [Telegram Bot](https://github.com/keshavcodex/telegram-bot)
+## Here is the [Telegram Bot Implementation](https://github.com/keshavcodex/telegram-bot)
 
 ## Features
 
