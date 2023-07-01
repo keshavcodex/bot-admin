@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const URL = "https://tiny-cyan-hedgehog-suit.cyclic.app";
-const URL = "http://localhost:8000";
+const URL = "https://tiny-cyan-hedgehog-suit.cyclic.app";
+// const URL = "http://localhost:8000";
 
 export const getSubscriber = async () => {
   try {
@@ -31,17 +31,18 @@ export const unsubscribe = async(userId) =>{
 
 export const updateCity = async(subscriber) => {
   const userData = { chatId: subscriber.userId, location: subscriber.city};
+  console.log("userData", userData);
   try{
-    return await axios.put(`${URL}/updatecity`, userData);
+    return await axios.put(`${URL}/${userData.chatId}`, userData);
   } catch (error) {
     console.log("Error while updating city", error);
   }
 }
 
 export const getOneSubscriber = async(userId) => {
-  const userData = {chatId: userId};
   try{
-    return await axios.get(`${URL}/updatecity`, userData);
+    console.log("Fetching detail of", userId);
+    return await axios.get(`${URL}/${userId}`);
   } catch (error) {
     console.log("Error while getting one subscriber detail", error);
   }

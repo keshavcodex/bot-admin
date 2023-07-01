@@ -1,8 +1,8 @@
-import * as React from "react";
+import React from "react";
 import { useState, useEffect } from "react";
-import { getSubscriber, unsubscribe, updateCity } from "./services/api";
+import { getSubscriber, unsubscribe } from "./services/api";
 import SubscribeForm from "./SubscribeForm";
-import EditCity from "./EditCity";
+import { Link } from "react-router-dom";
 import "./Table.scss";
 
 const Table = () => {
@@ -17,7 +17,11 @@ const Table = () => {
   const [subcriberList, setSubcriberList] = useState(defaultValue);
 
   const getSubcriberList = async () => {
-    var response = await getSubscriber();
+    try{
+      var response = await getSubscriber();
+    } catch (error){
+      return ("Server is down");
+    }
     setSubcriberList(response.data.reverse());
   };
 
@@ -30,11 +34,6 @@ const Table = () => {
     alert(response.data);
     getSubcriberList();
   };
-  const handleEdit = async (userId) => {
-    // var response = await updateCity(user);
-    console.log()
-  };
-
   return (
     <div>
       <h1>Admin Panel</h1>
@@ -44,7 +43,7 @@ const Table = () => {
           <tr>
             <th>User Id</th>
             <th>City</th>
-            <th>Edit</th>
+            {/* <th>Edit</th> */}
             <th>unsubscribe</th>
           </tr>
         </thead>
@@ -53,14 +52,15 @@ const Table = () => {
             <tr key={index}>
               <td key={props._id}>{props._id}</td>
               <td>{props.city}</td>
-              <td>
+              {/* <td>
                 <span
                   className="btn"
-                  onClick={() => handleEdit(props._id)}
+                  component={Link}
+                  to={`/edit/${props._id}`}
                 >
                   Edit
                 </span>
-              </td>
+              </td> */}
               <td>
                 <span
                   className="btn-del"

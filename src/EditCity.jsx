@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { updateCity, getOneSubscriber } from "./services/api";
 import { useNavigate, useParams } from "react-router-dom";
 
-function EditCity() {
+const EditCity = async() => {
   const defaultValue = {
     userId: "",
     city: "",
@@ -14,14 +14,15 @@ function EditCity() {
   const { id } = useParams();
 
   useEffect(() => {
-    getOneSubscriber();
+    subscriberDetail();
   },[]);
 
   const subscriberDetail = async () => {
-    var response = await getOneSubscriber();
+    var response = await getOneSubscriber(id);
     // setSubscriber(userId = reponse.data._id)
     // setSubscriber(city = reponse.data.city);
-    console.log("getting 1 data: ",response.data);
+    console.log(response.data);
+    console.log("getting 1 data: ", id);
   }
 
 
@@ -32,9 +33,11 @@ function EditCity() {
   };
 
   const handleEdit = async () => {
-    var response = await updateCity(subscriber);
-    console.log(response.data);
+    // var response = await updateCity(subscriber);
+    // console.log(response.data);
+    console.log("handle edit hit");
     navigate("/");
+    
   };
 
   return (
@@ -55,7 +58,8 @@ function EditCity() {
           placeholder="e.g. Delhi"
           value={subscriber.city}
         />
-        <button type="submit" onClick={handleEdit}>Edit User</button>
+        {/* <button type="submit" onClick={handleEdit}>Edit User</button> */}
+        <button type="submit" >Edit User</button>
       </div>
     </div>
   );
