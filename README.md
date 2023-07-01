@@ -1,5 +1,6 @@
-![Bot](./public/bot-chat.jpg)
-![Admin Page](./public/admin-page.png)
+<!-- ![Bot](./public/bot-chat.jpg)
+![Admin Page](./public/admin-page.png) -->
+![App Preview](./public/preview.jpg)
 
 ## Have a Look: [Bot-admin](https://bot-admin-z4.netlify.app/) 
 
