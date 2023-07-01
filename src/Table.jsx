@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { getSubscriber, unsubscribe } from "./services/api";
 import SubscribeForm from "./SubscribeForm";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./Table.scss";
 
 const Table = () => {
